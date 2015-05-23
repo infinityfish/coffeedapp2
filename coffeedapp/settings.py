@@ -17,8 +17,9 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',
+        # 'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'coffeedapp.db',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
@@ -56,12 +57,14 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = ''
+
+MEDIA_ROOT = '/Users/ericmabo/onemonthpy/coffeedapp/coffeedapp/uploads/'
+# MEDIA_ROOT = os.path.join(MAIN_DIR, '/uploads/'),
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://example.com/media/", "http://media.example.com/"
-MEDIA_URL = ''
+MEDIA_URL = '/uploads/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -130,10 +133,11 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'core',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admindocs',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -164,3 +168,34 @@ LOGGING = {
         },
     }
 }
+
+
+
+# Heroku Stuff HERE
+# ON_HEROKU = os.environ.get('ON_HEROKU')
+
+
+
+
+
+# if ON_HEROKU == True:
+
+#     # Parse database configuration from $DATABASE_URL
+
+#     import dj_database_url
+
+#     DATABASES['default'] = dj_database_url.config()
+
+# else: 
+
+#     DATABASES = {
+
+#         'default': {
+
+#             'ENGINE': 'django.db.backends.sqlite3',
+
+#             'NAME': os.path.join(MAIN_DIR, 'db.sqlite3'),
+
+#         }
+
+#     }

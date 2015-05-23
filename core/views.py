@@ -1,11 +1,25 @@
-# Create your views here.
-# from django.shortcuts import render
-from django.views.generic.base import TemplateView
-# from django.http import HttpResponse
-# Create your views here.
 
-# def TestView(request, **kwargs):
-# 	return HttpResponse("Hello 237SPACES")
+from django.shortcuts import render
+from django.views.generic.base import TemplateView
+
+
+from django.views.generic.list import ListView
+import core.models as coremodels
+
+from django.views.generic.detail import DetailView
+
 
 class LandingView(TemplateView):
 	template_name = "base/index.html"
+
+
+
+class LocationListView(ListView):
+	model = coremodels.Location
+	template_name = 'location/list.html'
+
+class LocationDetailView(DetailView):
+    model = coremodels.Location
+    template_name = 'location/detail.html'
+    context_object_name = 'location'
+
